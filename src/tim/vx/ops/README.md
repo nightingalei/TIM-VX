@@ -10,7 +10,7 @@ Pool2d|POOL|Mapped|[tf.nn.pool](https://tensorflow.google.cn/api_docs/python/tf/
 LeakyRelu|LEAKY_RELU|Mapped|[tf.nn.leaky_relu](https://tensorflow.google.cn/api_docs/python/tf/nn/leaky_relu)
 Concat|CONCAT|Mapped|[tf.concat](https://tensorflow.google.cn/api_docs/python/tf/concat)
 Split|SPLIT|Mapped|[tf.split](https://tensorflow.google.cn/api_docs/python/tf/split)
-||NOOP|Unmapped
+|Noop|NOOP|Mapped|A NOOP will be stripped.
 ||ROI_POOL|Unmapped|[ANEURALNETWORKS_ROI_POOLING](https://developer.android.com/ndk/reference/group/neural-networks#group___neural_networks_1ggaabbe492c60331b13038e39d4207940e0a6736198af337b2efbdb0b6b64dee7fe4)
 BatchNorm|BATCH_NORM|Mapped|[tf.nn.batch_normalization](https://tensorflow.google.cn/api_docs/python/tf/nn/batch_normalization)
 ||PROPOSAL|Unmapped
