@@ -157,7 +157,7 @@ TEST(Conv1d, ksize_6_stride_1_weights_2_whcn_shape_6_2_1_uint8) {
     EXPECT_TRUE(ArraysMatch(golden, output, static_cast<uint8_t>(0)));
 }
 
-TEST(Conv1d, ksize_3_stride_1_pad_1_weights_2_no_bias_whcn_shape_6_2_1_uint8) {
+TEST(Conv1d, ksize_3_stride_2_pad_1_weights_2_no_bias_whcn_shape_6_2_1_uint8) {
     auto ctx = tim::vx::Context::Create();
     auto graph = ctx->CreateGraph();
 
@@ -209,9 +209,6 @@ TEST(Conv1d, ksize_3_stride_1_pad_1_weights_2_no_bias_whcn_shape_6_2_1_uint8) {
     EXPECT_TRUE(ArraysMatch(golden, output, static_cast<uint8_t>(0)));
 }
 
-#if 0
-// Fail case
-// Internal impl conv1d don't support multiplier, need wait for the fix.
 TEST(Conv1d, ksize_3_stride_2_multiplier_1_whcn_shape_7_2_1_uint8) {
     auto ctx = tim::vx::Context::Create();
     auto graph = ctx->CreateGraph();
@@ -228,7 +225,7 @@ TEST(Conv1d, ksize_3_stride_2_multiplier_1_whcn_shape_7_2_1_uint8) {
                             input_shape, tim::vx::TensorAttribute::INPUT, input_quant);
     tim::vx::TensorSpec weight_spec(tim::vx::DataType::UINT8,
                             param_shape, tim::vx::TensorAttribute::CONSTANT, weight_quant);
-    tim::vx::TensorSpec bias_spec(tim::vx::DataType::UINT8,
+    tim::vx::TensorSpec bias_spec(tim::vx::DataType::INT32,
                             bias_shape, tim::vx::TensorAttribute::CONSTANT, bias_quant);
     tim::vx::TensorSpec output_spec(tim::vx::DataType::UINT8,
                             output_shape, tim::vx::TensorAttribute::OUTPUT, output_quant);
@@ -251,7 +248,7 @@ TEST(Conv1d, ksize_3_stride_2_multiplier_1_whcn_shape_7_2_1_uint8) {
     };
     std::vector<uint8_t> golden = {
         43, 26, 27,
-        72, 24,  0,
+        102, 54,  30,
     };
 
     EXPECT_TRUE(input_tensor->CopyDataToTensor(in_data.data(), in_data.size()));
@@ -269,4 +266,3 @@ TEST(Conv1d, ksize_3_stride_2_multiplier_1_whcn_shape_7_2_1_uint8) {
     EXPECT_TRUE(output_tensor->CopyDataFromTensor(output.data()));
     EXPECT_TRUE(ArraysMatch(golden, output, static_cast<uint8_t>(0)));
 }
-#endif

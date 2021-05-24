@@ -135,7 +135,6 @@ ArgMin|ARGMIN|Mapped|[tf.math.argmin](https://tensorflow.google.cn/api_docs/pyth
 ||BIDIRECTIONAL_SEQUENCE_LSTM|Unmapped
 ||RNNCELL_OVXLIB|Unmapped
 HardSwish|SWISH|Mapped|[tf.keras.activations.swish](https://tensorflow.google.cn/api_docs/python/tf/keras/activations/swish)
-||DEPTHWISE_CONV1D|Unmapped
 GatherNd|GATHER_ND|Mapped|[tf.gather_nd](https://tensorflow.google.cn/api_docs/python/tf/gather_nd)
 Cast|CAST|Mapped|[tf.cast](https://tensorflow.google.cn/api_docs/python/tf/cast)
 ||LINEAR|Unmapped|f(x) = a\*x + b
